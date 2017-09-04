@@ -16,6 +16,7 @@ angular.module('simpleCabBookingApp')
         $scope.ride = {
             customer_id: null
         };
+
         $scope.createCustomer = function () {
             if ($scope.customer.customer_name && $scope.customer.customer_number) {
                 dashboardService.createCustomer($scope.customer).then(function (response) {
@@ -37,7 +38,7 @@ angular.module('simpleCabBookingApp')
                         alert("Something wrong happened");
                     }
                 }, function (errResponse) {
-                    alert(errResponse.data.error.message);
+                    alert(errResponse.data.error.message || 'user not found');
                 });
             }
         }

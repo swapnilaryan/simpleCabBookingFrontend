@@ -29,6 +29,16 @@ angular
                 url:'/customer',
                 templateUrl: '../views/customer.html',
                 controller: 'CustomerCtrl'
+            })
+            .state('driver',{
+                url:'/driver',
+                templateUrl: '../views/driver.html',
+                controller: 'DriverCtrl'
+            })
+            .state('details',{
+                url:'/driver/details?:id',
+                templateUrl: '../views/driverDetails.html',
+                controller: 'DriverDetailsCtrl'
             });
 
         $urlRouterProvider.otherwise('/');
@@ -39,7 +49,7 @@ angular
         //         controllerAs: 'main'
         //     })
         //     .when('/about', {
-        //         templateUrl: 'views/about.html',
+        //         templateUrl: 'views/driver.html',
         //         controller: 'AboutCtrl',
         //         controllerAs: 'about'
         //     })

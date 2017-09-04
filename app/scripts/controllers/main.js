@@ -13,15 +13,16 @@ angular.module('simpleCabBookingApp')
             var temp = "";
             var diff = (moment().valueOf() - moment(dashboard[property]).valueOf())/1000;
             var hours = parseInt(diff/60/60);
-            var minutes = parseInt(diff/60);
+            var minutes = parseInt(((diff/60/60)%1)*60);
             var seconds = parseInt(diff%60);
             if(hours)
                 temp += hours+ ' hours ';
             if(minutes)
-                 temp += minutes + ' mins ';
+                temp += minutes + ' mins ';
             temp += seconds + ' seconds ';
             return temp;
         };
+
         $scope.refresh = function () {
             dashboardService.getAllRequestStatus().then(function (response) {
                 if (response.status === 200) {
@@ -34,7 +35,7 @@ angular.module('simpleCabBookingApp')
                             $scope.dashboard[i].time_elapsed = timeDifference($scope.dashboard[i], 'cr_request_accepted_time');
                         else if($scope.dashboard[i].cr_status==='Waiting')
                             $scope.dashboard[i].time_elapsed = timeDifference($scope.dashboard[i], 'cr_requested_time');
-                        else if($scope.dashboard[i].cr_status==='Completed')
+                        else if($scope.dashboard[i].cr_status==='Complete')
                             $scope.dashboard[i].time_elapsed = timeDifference($scope.dashboard[i], 'cr_request_completed_time');
                     }
                 }
@@ -42,5 +43,8 @@ angular.module('simpleCabBookingApp')
         };
 
         $scope.refresh();
+        setInterval(function(){
+            $scope.refresh();
+        }, 1000);
 
     });

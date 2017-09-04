@@ -9,6 +9,19 @@ angular.module('simpleCabBookingApp')
             },
             requestCab: function (requestBody) {
                 return $http.post(site_config.url+'/requestCab', requestBody);
+            },
+            getAllDriver: function () {
+                return $http.get(site_config.url+'/getAllDriver');
+            },
+            getDriverDetails: function (requestParams) {
+                return $http.get(site_config.url+'/driver/'+requestParams.id);
+            },
+            acceptCabRequest: function (requestBody) {
+                return $http.post(site_config.url+'/acceptCabRequest', requestBody);
+            },
+            completeRequest: function (requestBody) {
+                console.log(requestBody);
+                return $http.post(site_config.url+'/completeRequest', requestBody);
             }
         }
     });

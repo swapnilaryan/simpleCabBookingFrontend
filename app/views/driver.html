@@ -1,0 +1,17 @@
+<div class="row">
+    <h2>Driver Dashboard</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>Driver ID</th>
+            <th>Driver Name</th>
+            <th>Driver Number</th>
+
+        </tr>
+        <tr ng-repeat="driver in drivers" ng-click="driverDetails(driver.driver_id);">
+            <td><a ui-sref="details({ id: driver.driver_id})">{{driver.driver_id}}</a></td>
+            <td>{{driver.driver_name}}</td>
+            <td>{{driver.driver_phone_number}}</td>
+        </tr>
+    </table>
+</div>
+

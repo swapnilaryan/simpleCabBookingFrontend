@@ -12,7 +12,7 @@
             <th>Completed Time</th>
 
         </tr>
-        <tr ng-repeat="data in dashboard">
+        <tr ng-repeat="data in dashboard | orderBy: '-cr_status' ">
             <td>{{data.cr_id}}</td>
             <td>{{data.cr_customer_id}}</td>
             <td>{{data.cr_requested_time}}</td>

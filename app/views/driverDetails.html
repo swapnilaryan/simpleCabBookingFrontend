@@ -1,0 +1,35 @@
+<h2>Driver Details     <button class="btn btn-primary" ng-click="refresh();">Refresh</button></h2>
+<div class="row" style="text-align: center;">
+    <div class="col-md-4"><h3>Waiting</h3></div>
+    <div class="col-md-4"><h3>Ongoing</h3></div>
+    <div class="col-md-4"><h3>Completed</h3></div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-4">
+        <div ng-repeat="data in driverDashboard"   ng-if="data.cr_status=='Waiting'"  style="border: 1px solid; margin-bottom:2px; border-radius: 2px; text-align:center; ">
+            <p><b>Request ID : </b>{{data.cr_id}}</p>
+            <p><b>Customer ID : </b>{{data.cr_customer_id}}</p>
+            <p><b>Requested : </b>{{data.time_elapsed}} ago</p>
+            <p><b>Customer : </b>{{data.cr_customer_id}}</p>
+            <button class="btn btn-primary" style="width: 90%" ng-click="acceptCabRequest(data.cr_customer_id);">Select</button>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div ng-repeat="driverDetail in driverDetails"   ng-if="driverDetail.cr_status=='Ongoing'"  style="border: 1px solid; margin-bottom:2px; border-radius: 2px;">
+            <p><b>Request ID : </b>{{driverDetail.cr_id}}</p>
+            <p><b>Customer ID : </b>{{driverDetail.cr_customer_id}}</p>
+            <p><b>Requested : </b>{{driverDetail.requested_time}} ago</p>
+            <p><b>Picked Up : </b>{{driverDetail.accepted_time}} ago</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div ng-repeat="driverDetail in driverDetails"   ng-if="driverDetail.cr_status=='Complete'"  style="border: 1px solid; margin-bottom:2px; border-radius: 2px;">
+            <p><b>Request ID : </b>{{driverDetail.cr_id}}</p>
+            <p><b>Customer ID : </b>{{driverDetail.cr_customer_id}}</p>
+            <p><b>Requested : </b>{{driverDetail.requested_time}} ago</p>
+            <p><b>Picked Up : </b>{{driverDetail.accepted_time}} ago</p>
+            <p><b>Completed : </b>{{driverDetail.completed_time}} ago</p>
+        </div>
+    </div>
+</div>
