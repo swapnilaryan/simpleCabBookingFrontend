@@ -1,23 +1,26 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<div class="row">
+    <h2>Dashboard     <button class="btn btn-primary" ng-click="refresh()">Refresh</button></h2>
+    <table class="table table-striped">
+        <tr>
+            <th>Request ID</th>
+            <th>Customer ID</th>
+            <th>Requested Time</th>
+            <th>Accepted Time</th>
+            <th>Time Elapsed</th>
+            <th>Status</th>
+            <th>Driver</th>
+            <th>Completed Time</th>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+        </tr>
+        <tr ng-repeat="data in dashboard">
+            <td>{{data.cr_id}}</td>
+            <td>{{data.cr_customer_id}}</td>
+            <td>{{data.cr_requested_time}}</td>
+            <td>{{data.cr_request_accepted_time}}</td>
+            <td>{{data.time_elapsed}}</td>
+            <td>{{data.cr_status}}</td>
+            <td>{{data.cr_driver_id}}</td>
+            <td>{{data.cr_request_completed_time}}</td>
+        </tr>
+    </table>
 </div>

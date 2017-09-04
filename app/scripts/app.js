@@ -18,19 +18,32 @@ angular
         'ui.router',
         'ui.bootstrap'
     ])
-    .config(function ($routeProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl',
-                controllerAs: 'main'
+    .config(function ($routeProvider, $stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('home', {
+                url:'/',
+                templateUrl: '../views/main.html',
+                controller: 'MainCtrl'
             })
-            .when('/about', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl',
-                controllerAs: 'about'
-            })
-            .otherwise({
-                redirectTo: '/'
+            .state('customer',{
+                url:'/customer',
+                templateUrl: '../views/customer.html',
+                controller: 'CustomerCtrl'
             });
+
+        $urlRouterProvider.otherwise('/');
+        // $routeProvider
+        //     .when('/', {
+        //         templateUrl: 'views/main.html',
+        //         controller: 'MainCtrl',
+        //         controllerAs: 'main'
+        //     })
+        //     .when('/about', {
+        //         templateUrl: 'views/about.html',
+        //         controller: 'AboutCtrl',
+        //         controllerAs: 'about'
+        //     })
+        //     .otherwise({
+        //         redirectTo: '/'
+        //     });
     });

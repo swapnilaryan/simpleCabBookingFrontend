@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-6 customer_details">
+        <form name="customerForm" class="form-group">
+            <label for="customer_name">Customer Name : </label>
+            <input ng-model="customer.customer_name" class="form-control" type="text" id="customer_name" required>
+
+            <label for="customer_number">Customer Number : </label>
+            <input ng-model="customer.customer_number" class="form-control" type="number" id="customer_number" name="input"
+                   ng-minlength="10" ng-maxlength="10" min="7000000000" max="9999999999" ng-class="{'red':customerForm.input.$invalid}" required>
+
+            <div role="alert">
+                <span class="error" ng-show="customerForm.input.$error.required">Required!</span>
+                <span class="error" ng-show="customerForm.input.$error.number">Not valid number!</span>
+            </div>
+            <button class="btn btn-primary" ng-click="createCustomer()">Create Customer</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <p>If already have a customer id, start riding</p>
+        <form name="customerRideForm" class="form-group">
+            <label for="customer_name">Customer ID : </label>
+            <input ng-model="ride.customer_id" class="form-control" type="text" id="customer_ride">
+            <button class="btn btn-primary" ng-click="letsRide()">Let's Ride</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    .red {
+        border:1px solid red;
+    }
+    .error{
+        color: orangered;
+    }
+    button{
+        margin-top: 10px;
+    }
+    .customer_details{
+        border-right: 1px solid black;
+    }
+</style>
